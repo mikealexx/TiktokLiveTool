@@ -1,0 +1,46 @@
+<MyLayout>:
+    id: layout
+    Label:
+        text: "CHAT"
+        pos_hint: {"center_x":0.25, "center_y": 0.95}
+    Label:
+        text: "Streamer: "
+        pos_hint: {"center_x":0.6, "center_y": 0.95}
+    TextInput:
+        text: "test"
+        multiline: False
+        size_hint_x: 0.2
+        size_hint_y: 0.05
+        pos_hint: {"center_x":0.75, "center_y": 0.95}
+    Button:
+        text: "CONNECT"
+        pos_hint: {"center_x":0.92, "center_y": 0.95}
+        size_hint_x: 0.122
+        size_hint_y: 0.07
+        on_press: 
+    TextInput:
+        id: message
+        text: "message"
+        multiline: False
+        size_hint_x: 0.2
+        size_hint_y: 0.05
+        pos_hint: {"center_x":0.75, "center_y": 0.8}
+    Button:
+        text: "SEND"
+        pos_hint: {"center_x":0.92, "center_y": 0.8}
+        size_hint_x: 0.122
+        size_hint_y: 0.07
+        on_press: chat_history.text += ("\n"+message.text)
+    ScrollView:
+        pos_hint: {"x": 0.04, "top": 0.89}
+        do_scroll_x: False
+        size_hint_x: 0.4
+        size_hint_y: 0.84
+        ChatLabel:
+            id: chat_history
+            text_size: self.width, None
+            height: self.texture_size[1]
+            text: ''
+            size_hint: 1, None
+            size: self.texture_size
+            markup: True
