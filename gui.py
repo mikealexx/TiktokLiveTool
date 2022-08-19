@@ -23,7 +23,7 @@ import threading
 from TikTokLive import TikTokLiveClient
 from time import sleep
 
-client = TikTokLiveClient(unique_id="@nadiaontwitch", process_initial_data=False)
+client = TikTokLiveClient(unique_id="@mystique_jerseys", process_initial_data=False)
 
 class ChatLabel(Label):
     def __init__(self, **kwargs):

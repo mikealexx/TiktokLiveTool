@@ -11,12 +11,14 @@ def main():
     global last_comment
     global curr_comment
     global read
+    last_comment = ''
     curr_comment = ''
     while(read):
         try:
-            engine.say(curr_comment)
-            engine.runAndWait()
-            last_comment = curr_comment
+            if curr_comment != last_comment:
+                engine.say(curr_comment)
+                engine.runAndWait()
+                last_comment = curr_comment
         except KeyboardInterrupt:
             break
         if read == False:
