@@ -3,22 +3,23 @@ import pyttsx3
 import gui
 
 engine = pyttsx3.init()
-global speech_read
+global last_comment
+global curr_comment
+global read
 
 def main():
-    global speech_read
-    speech_read = True
-    last_comment = ""
-    curr_comment = ""
-    while(True):
+    global last_comment
+    global curr_comment
+    global read
+    curr_comment = ''
+    while(read):
         try:
-            with open("curr_comment.txt", "r") as file:
-                curr_comment = file.read().strip()
-                if last_comment != curr_comment:
-                    engine.say(curr_comment)
-                    engine.runAndWait()
-                    last_comment = curr_comment
+            engine.say(curr_comment)
+            engine.runAndWait()
+            last_comment = curr_comment
         except KeyboardInterrupt:
             break
-        if(speech_read == False):
+        if read == False:
             return None
+    curr_comment = ''
+    return None

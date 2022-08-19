@@ -9,6 +9,7 @@ import sys
 import subprocess
 import time
 import gui
+import speech
 
 client = gui.client
 
@@ -18,11 +19,10 @@ stop = False
 
 @client.on("comment")
 async def on_connect(event: CommentEvent):
-    with open("curr_comment.txt", "w") as file:
-        try:
-            file.write(event.comment)
-        except UnicodeEncodeError:
-            file.write("")
+    try:
+        speech.curr_comment = event.comment
+    except UnicodeEncodeError:
+        speech.curr_comment = ''
     curr_app.ids.chat_history.text += ("[color=#04d3ff]" + event.user.nickname + " said:\n    " + "[/color]" + event.comment + "\n")
     if(stop):
         return None
