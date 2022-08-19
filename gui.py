@@ -23,7 +23,7 @@ import threading
 from TikTokLive import TikTokLiveClient
 from time import sleep
 
-client = TikTokLiveClient(unique_id="@mystique_jerseys", process_initial_data=False)
+client = TikTokLiveClient(unique_id="@yewleea", process_initial_data=False)
 
 class ChatLabel(Label):
     def __init__(self, **kwargs):
@@ -50,6 +50,7 @@ class MyApp(App):
         client.loop.stop()
         thread1.join()
         print("thread1 stopped\n")
+        speech.engine.endLoop()
         speech.read = False
         thread2.join()
         print("thread2 stopped\n")

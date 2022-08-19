@@ -13,7 +13,7 @@ def main():
     global read
     last_comment = ''
     curr_comment = ''
-    while(read):
+    while(True):
         try:
             if curr_comment != last_comment:
                 engine.say(curr_comment)
@@ -22,6 +22,6 @@ def main():
         except KeyboardInterrupt:
             break
         if read == False:
-            return None
+            return read
     curr_comment = ''
-    return None
+    return read
